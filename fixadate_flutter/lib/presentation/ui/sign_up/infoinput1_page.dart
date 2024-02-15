@@ -248,6 +248,7 @@ class _InfoInput1PageState extends State<InfoInput1Page> {
                                   });
                                   showModalBottomSheet(
                                       context: (context),
+
                                       builder: (BuildContext context) {
                                         return Container(
                                           height: 330,
@@ -313,7 +314,9 @@ class _InfoInput1PageState extends State<InfoInput1Page> {
                                                     mode: CupertinoDatePickerMode.date,
                                                     onDateTimeChanged: (dateTime) {
                                                       String formattedDate = DateFormat('MM-dd-yyyy').format(dateTime);
+                                                      //logger.i(formattedDate);
                                                       int month = int.parse(formattedDate.split("-")[0]);
+                                                      logger.i(formattedMonth[month-1]);
                                                       formattedDate = formattedMonth[month-1] + "                " + formattedDate.split("-")[1] + "               " + formattedDate.split("-")[2];
                                                       _birthFieldControler.text = formattedDate;
                                                     },
@@ -323,6 +326,7 @@ class _InfoInput1PageState extends State<InfoInput1Page> {
                                           )
                                         );
                                       }
+
                                   );
                                 },
                                 onSaved: (value)  {

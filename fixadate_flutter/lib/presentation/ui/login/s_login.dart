@@ -1,4 +1,6 @@
-import 'package:fixadate_flutter/presenter/widget/w_login_button.dart';
+
+import 'package:fixadate_flutter/presentation/ui/login/widget/w_login_button.dart';
+
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
