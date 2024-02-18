@@ -1,24 +1,24 @@
-import 'dart:math';
 
 import 'package:fixadate_flutter/domain/usecase/sign_up_usecase.dart';
 import 'package:get/get.dart';
+import '../ui/sign_up/s_signup1.dart';
 
-import '../ui/sign_up/infoinput1_page.dart';
 
 class SignUpController extends GetxController{
   static SignUpController get to => Get.find();
   late String oauthId;
   late String oauthPlatform;
-  Rx<String?> randomNick = "".obs;
+  late String nick;
   late String name;
   late String birth;
   late String gender;
+  late String? profession=null;
   GetRandomNcikUsecase getRandomNcikUsecase = GetRandomNcikUsecase();
   Future<void> RandomNick() async{
-    randomNick =Rx<String?>(await getRandomNcikUsecase.excute());
-    logger.i(randomNick);
+    nick =await getRandomNcikUsecase.excute();
+    logger.i(nick);
   }
   void check(){
-    logger.i("$oauthId $oauthPlatform $name $gender");
+    logger.i("$oauthId $oauthPlatform $nick $name $gender $birth $profession");
   }
 }
