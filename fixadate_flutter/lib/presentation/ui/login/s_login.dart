@@ -2,6 +2,7 @@
 import 'package:fixadate_flutter/presentation/ui/login/widget/w_login_button.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -41,19 +42,22 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(
                 height: 8,
               ),
-              const LoginButton(
+              LoginButton(
                 PlatformName: 'Sign in with Kakao',
                 backGroundColor: Color.fromRGBO(255, 255, 0, 1.0),
+                getPage: () => Get.toNamed("/signUp1" ,arguments: ["oauthId","kakao"]),
               ),
-              SizedBox(height: 20),
-              const LoginButton(
+              const SizedBox(height: 20),
+              LoginButton(
                 PlatformName: "Sign in with Google",
                 backGroundColor: Color.fromRGBO(255, 255, 255, 1.0),
+                getPage: () => Get.toNamed("/signUp1" ,arguments: ["oauthId","google"]),
               ),
-              SizedBox(height: 20),
-              const LoginButton(
+              const SizedBox(height: 20),
+              LoginButton(
                 PlatformName: 'Sign in with Apple',
                 backGroundColor: Color.fromRGBO(255, 255, 255, 1.0),
+                getPage: () => Get.toNamed("/signUp1" ,arguments: ["oauthId","oauthPlatform"]),
               ),
             ],
           ),

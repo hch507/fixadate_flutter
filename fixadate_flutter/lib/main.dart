@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         textTheme: fixadateTextTheme,
         useMaterial3: true,
       ),
-      initialRoute: "/signUp1",
+      initialRoute: "/login",
       getPages: getRoutes,
     );
   }
