@@ -1,10 +1,12 @@
 
+import 'package:fixadate_flutter/config/di/locator.dart';
 import 'package:fixadate_flutter/config/route/getRoutes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'config/theme/text_theme.dart';
 
 void main() {
+  configureDependencies();
   runApp(const MyApp());
 }
 
