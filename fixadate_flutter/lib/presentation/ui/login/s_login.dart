@@ -1,4 +1,4 @@
-
+import 'package:fixadate_flutter/presentation/presenter/login_controller.dart';
 import 'package:fixadate_flutter/presentation/ui/login/widget/w_login_button.dart';
 
 import 'package:flutter/material.dart';
@@ -45,19 +45,25 @@ class LoginScreen extends StatelessWidget {
               LoginButton(
                 PlatformName: 'Sign in with Kakao',
                 backGroundColor: Color.fromRGBO(255, 255, 0, 1.0),
-                getPage: () => Get.toNamed("/signup1" ,arguments: ["oauthId","kakao"]),
+                onPressed: () {},
+                  getPage: () => Get.toNamed("/signup1" ,arguments: ["oauthId","kakao"]),
               ),
               const SizedBox(height: 20),
               LoginButton(
                 PlatformName: "Sign in with Google",
                 backGroundColor: Color.fromRGBO(255, 255, 255, 1.0),
-                getPage: () => Get.toNamed("/signup1" ,arguments: ["oauthId","google"]),
+                onPressed: () {
+                  LoginController.to.requestGoogleLogin();
+                },
+                //getPage: () => Get.toNamed("/signup1" ,arguments: ["oauthId","google"]),
               ),
               const SizedBox(height: 20),
               LoginButton(
                 PlatformName: 'Sign in with Apple',
                 backGroundColor: Color.fromRGBO(255, 255, 255, 1.0),
-                getPage: () => Get.toNamed("/signup1" ,arguments: ["oauthId","oauthPlatform"]),
+                onPressed: () {},
+                //getPage: () => Get.toNamed("/signup1" ,arguments: ["oauthId","oauthPlatform"]),
+
               ),
             ],
           ),
