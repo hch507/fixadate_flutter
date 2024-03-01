@@ -3,8 +3,6 @@ import 'package:fixadate_flutter/presentation/ui/sign_up/widget/w_page_route_but
 import 'package:fixadate_flutter/presentation/ui/sign_up/widget/w_register_title_text.dart';
 import 'package:fixadate_flutter/presentation/ui/widget/w_preivous.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 List<String> professionList = ["student", "option2", "option3"];
 
@@ -61,17 +59,13 @@ class _SecondSignUpScreenState extends State<SecondSignUpScreen> {
                 text: "Next",
                 backGroundColor: Color.fromRGBO(251, 42, 66, 1.0),
                 textColor: Colors.white,
-                onPressed: () {
-                  Get.toNamed("/signup3");
-                },
+                onPressed: () {},
               ),
               PageRouteButton(
                 text: "Skip",
                 backGroundColor: Colors.transparent,
                 textColor: Color.fromRGBO(251, 42, 66, 1.0),
-                onPressed: () {
-                  Get.toNamed("/signup3");
-                },
+                onPressed: () {},
               ),
             ],
           ),
