@@ -1,3 +1,4 @@
+import 'package:fixadate_flutter/presentation/ui/sign_up/ThirdSignUpScreen.dart';
 import 'package:fixadate_flutter/presentation/ui/sign_up/s_signup1.dart';
 import 'package:fixadate_flutter/presentation/ui/sign_up/s_signup2.dart';
 import 'package:get/get.dart';
@@ -14,7 +15,8 @@ List<GetPage>? getRoutes = [
       () => Get.lazyPut(() => LoginController()),
     ),
   ),
-  GetPage(name: "/loginError", page: () => LoginErrorScreen()),
-  GetPage(name: "/signUp1", page: () => FirstSignUpScreen()),
-  GetPage(name: "/signUp2", page: () => SecondSignUpScreen())
+  GetPage(name: "/login/error", page: () => LoginErrorScreen()),
+  GetPage(name: "/signup1", page: () => FirstSignUpScreen()),
+  GetPage(name: "/signup2", page: () => SecondSignUpScreen()),
+  GetPage(name: "/signup3", page: () => ThirdSignUpScreen()),
 ];
