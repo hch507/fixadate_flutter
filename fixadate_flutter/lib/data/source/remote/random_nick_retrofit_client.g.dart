@@ -13,7 +13,7 @@ class _RandomNickRestClient implements RandomNickRestClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://3.37.141.38:8080/';
+    baseUrl ??= 'http://api.fixadate.app/';
   }
 
   final Dio _dio;
@@ -33,7 +33,7 @@ class _RandomNickRestClient implements RandomNickRestClient {
     )
         .compose(
           _dio.options,
-          'member/random/nickname',
+          'member/nickname',
           queryParameters: queryParameters,
           data: _data,
         )

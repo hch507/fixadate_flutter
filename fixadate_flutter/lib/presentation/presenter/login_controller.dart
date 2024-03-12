@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../ui/sign_up/s_signup1.dart';
+
 class LoginController extends GetxController{
   static LoginController get to => Get.find();
 
@@ -11,9 +13,10 @@ class LoginController extends GetxController{
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
     if (googleUser != null) {
-      print('name = ${googleUser.displayName}');
-      print('email = ${googleUser.email}');
-      print('id = ${googleUser.id}');
+      logger.i('name = ${googleUser.displayName}');
+      logger.i('email = ${googleUser.email}');
+      logger.i('id = ${googleUser.id}');
+      Get.toNamed("/signup1" ,arguments: [googleUser.id,"google"]);
 
     }
   }

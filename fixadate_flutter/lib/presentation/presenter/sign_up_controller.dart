@@ -14,12 +14,18 @@ class SignUpController extends GetxController{
   late String birth;
   late String gender;
   late String? profession=null;
+  RxBool isAgree = false.obs;
   GetRandomNcikUsecase getRandomNcikUsecase = locator<GetRandomNcikUsecase>();
   Future<void> RandomNick() async{
     nick =await getRandomNcikUsecase.excute();
     logger.i(nick);
   }
-  void check(){
-    logger.i("$oauthId $oauthPlatform $nick $name $gender $birth $profession");
+  void agreeTAC(){
+    isAgree.value = true;
   }
+
+  void check(){
+    logger.i("$oauthId $oauthPlatform $nick $name $gender $birth ${isAgree.value} $profession");
+  }
+
 }

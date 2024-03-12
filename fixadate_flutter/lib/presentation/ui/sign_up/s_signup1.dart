@@ -10,6 +10,7 @@ import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 
 var logger = Logger();
+
 class FirstSignUpScreen extends StatefulWidget {
   const FirstSignUpScreen({super.key});
 
@@ -82,7 +83,7 @@ class _FirstSignUpScreenState extends State<FirstSignUpScreen> {
                     ),
                   ),
                   textEditingController: nickTextEditingController,
-                  validator: validate(),
+                  validator: validator(),
                 ),
                 const SizedBox(
                   height: 20,
@@ -90,161 +91,162 @@ class _FirstSignUpScreenState extends State<FirstSignUpScreen> {
                 RegisterTextFormField(
                   hintText: "이름을 입력해 주세요.",
                   textEditingController: nameTextEditingController,
-                  validator: validate(),
+                  validator: validator(),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 Container(
-                    decoration: BoxDecoration(
-                        border: Border(
-                      top: BorderSide(
-                        color: _isBirthFocused
-                            ? focusedColor
-                            : Colors.white, // Set the top border color
-                        width: 0.5, // Set the top border width
-                      ),
-                      bottom: BorderSide(
-                        color: _isBirthFocused
-                            ? focusedColor
-                            : Colors.white, // Set the bottom border color
-                        width: 0.5, // Set the bottom border width
-                      ),
-                    )),
-                    child: TextFormField(
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyLarge!
-                          .copyWith(color: Colors.white),
-                      controller: birthFieldControler,
-                      decoration: const InputDecoration(
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                      ),
-                      readOnly: true,
-                      onTap: () {
-                        setState(() {
-                          _isBirthFocused = true;
-                        });
-                        showModalBottomSheet(
-                            context: (context),
-                            builder: (BuildContext context) {
-                              return Container(
-                                  height: 330,
-                                  // color: Colors.white,
-                                  decoration: const BoxDecoration(
-                                      color: Colors.transparent, // 모달 배경색
-                                      borderRadius: BorderRadius.vertical(
-                                        top:
-                                            Radius.circular(46), // 모달 전체 라운딩 처리
-                                      )),
-                                  //CUPERTINODATEPICKER (FOLDING)
-                                  child: Column(
-                                    children: [
-                                      SizedBox(height: 25),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text("  "),
-                                          Container(
-                                            padding: EdgeInsets.all(5),
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(17),
-                                              color: Colors.grey[300],
-                                            ),
-                                            child: Text(
-                                              "  Month  ",
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyMedium!
-                                                  .copyWith(
-                                                      color: Colors.black54),
-                                            ),
+                  decoration: BoxDecoration(
+                      border: Border(
+                    top: BorderSide(
+                      color: _isBirthFocused
+                          ? focusedColor
+                          : Colors.white, // Set the top border color
+                      width: 0.5, // Set the top border width
+                    ),
+                    bottom: BorderSide(
+                      color: _isBirthFocused
+                          ? focusedColor
+                          : Colors.white, // Set the bottom border color
+                      width: 0.5, // Set the bottom border width
+                    ),
+                  )),
+                  child: TextFormField(
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyLarge!
+                        .copyWith(color: Colors.white),
+                    controller: birthFieldControler,
+                    decoration: const InputDecoration(
+                      enabledBorder: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                    ),
+                    readOnly: true,
+                    onTap: () {
+                      setState(() {
+                        _isBirthFocused = true;
+                      });
+                      showModalBottomSheet(
+                          context: (context),
+                          builder: (BuildContext context) {
+                            return Container(
+                                height: 330,
+                                // color: Colors.white,
+                                decoration: const BoxDecoration(
+                                    color: Colors.transparent, // 모달 배경색
+                                    borderRadius: BorderRadius.vertical(
+                                      top: Radius.circular(46), // 모달 전체 라운딩 처리
+                                    )),
+                                //CUPERTINODATEPICKER (FOLDING)
+                                child: Column(
+                                  children: [
+                                    SizedBox(height: 25),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text("  "),
+                                        Container(
+                                          padding: EdgeInsets.all(5),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(17),
+                                            color: Colors.grey[300],
                                           ),
-                                          Text("           "),
-                                          Container(
-                                            padding: EdgeInsets.all(5),
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(17),
-                                              color: Colors.grey[300],
-                                            ),
-                                            child: Text(
-                                              "  Day  ",
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyMedium!
-                                                  .copyWith(
-                                                      color: Colors.black54),
-                                            ),
+                                          child: Text(
+                                            "  Month  ",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium!
+                                                .copyWith(
+                                                    color: Colors.black54),
                                           ),
-                                          Text("    "),
-                                          Container(
-                                            padding: EdgeInsets.all(5),
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(17),
-                                              color: Colors.grey[300],
-                                            ),
-                                            child: Text(
-                                              "  Year  ",
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyMedium!
-                                                  .copyWith(
-                                                      color: Colors.black54),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Expanded(
-                                        child: CupertinoDatePicker(
-                                          minimumYear: 1900,
-                                          maximumYear: 2024,
-                                          initialDateTime: initDate,
-                                          mode: CupertinoDatePickerMode.date,
-                                          onDateTimeChanged: (dateTime) {
-                                            String formattedDate =
-                                                DateFormat('MM-dd-yyyy')
-                                                    .format(dateTime);
-                                            //logger.i(formattedDate);
-                                            int month = int.parse(
-                                                formattedDate.split("-")[0]);;
-                                            formattedDate =
-                                                formattedMonth[month - 1] +
-                                                    "                " +
-                                                    formattedDate
-                                                        .split("-")[1] +
-                                                    "               " +
-                                                    formattedDate.split("-")[2];
-                                            birthFieldControler.text =
-                                                formattedDate;
-                                          },
                                         ),
+                                        Text("           "),
+                                        Container(
+                                          padding: EdgeInsets.all(5),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(17),
+                                            color: Colors.grey[300],
+                                          ),
+                                          child: Text(
+                                            "  Day  ",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium!
+                                                .copyWith(
+                                                    color: Colors.black54),
+                                          ),
+                                        ),
+                                        Text("    "),
+                                        Container(
+                                          padding: EdgeInsets.all(5),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(17),
+                                            color: Colors.grey[300],
+                                          ),
+                                          child: Text(
+                                            "  Year  ",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium!
+                                                .copyWith(
+                                                    color: Colors.black54),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Expanded(
+                                      child: CupertinoDatePicker(
+                                        minimumYear: 1900,
+                                        maximumYear: 2024,
+                                        initialDateTime: initDate,
+                                        mode: CupertinoDatePickerMode.date,
+                                        onDateTimeChanged: (dateTime) {
+                                          String formattedDate =
+                                              DateFormat('MM-dd-yyyy')
+                                                  .format(dateTime);
+                                          //logger.i(formattedDate);
+                                          int month = int.parse(
+                                              formattedDate.split("-")[0]);
+                                          ;
+                                          formattedDate =
+                                              formattedMonth[month - 1] +
+                                                  "                " +
+                                                  formattedDate.split("-")[1] +
+                                                  "               " +
+                                                  formattedDate.split("-")[2];
+                                          birthFieldControler.text =
+                                              formattedDate;
+                                        },
                                       ),
-                                    ],
-                                  ));
-                            }).then(
-                          (value) => setState(() {
-                            _isBirthFocused = false;
-                          }),
-                        );
-                      },
-                      onSaved: (value) {
-                        String strMonth = value!.substring(0, 3);
-                        int intMonth = formattedMonth.indexOf(strMonth) + 1;
-                        String month = intMonth.toString();
-                        if (month.length < 2) {
-                          month = "0" + month;
-                        }
-                        value = value!.replaceAll(" ", "");
-                        value = month + value.substring(3);
-                        _birth = value;
-                      },
-                    )),
+                                    ),
+                                  ],
+                                ));
+                          }).then(
+                        (value) => setState(() {
+                          _isBirthFocused = false;
+                        }),
+                      );
+                    },
+                    onSaved: (value) {
+                      logger.i(value);
+                      String strMonth = value!.substring(0, 3);
+                      int intMonth = formattedMonth.indexOf(strMonth) + 1;
+                      String month = intMonth.toString();
+                      if (month.length < 2) {
+                        month = "0" + month;
+                      }
+                      value = value!.replaceAll(" ", "");
+                      value = month + value.substring(3);
+                      _birth = value;
+                    },
+                  ),
+                ),
                 SizedBox(
                   height: 20,
                 ),
@@ -358,6 +360,7 @@ class _FirstSignUpScreenState extends State<FirstSignUpScreen> {
                       } else if (_isMalePressed) {
                         _gender = "Male";
                       }
+                      _formKey.currentState?.save();
                       SignUpController.to.nick = nickTextEditingController.text;
                       SignUpController.to.name = nameTextEditingController.text;
                       SignUpController.to.gender = _gender;

@@ -1,8 +1,11 @@
-import 'package:fixadate_flutter/presentation/presenter/sign_up_controller.dart';
+
+import 'package:fixadate_flutter/presentation/ui/sign_up/widget/w_checkbox.dart';
+import 'package:fixadate_flutter/presentation/ui/sign_up/widget/w_drop_down_menu.dart';
 import 'package:fixadate_flutter/presentation/ui/sign_up/widget/w_page_route_button.dart';
 import 'package:fixadate_flutter/presentation/ui/sign_up/widget/w_register_title_text.dart';
 import 'package:fixadate_flutter/presentation/ui/widget/w_preivous.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 List<String> professionList = ["student", "option2", "option3"];
 
@@ -28,38 +31,36 @@ class _SecondSignUpScreenState extends State<SecondSignUpScreen> {
               SizedBox(height: 120),
               PreviousPageArrow(),
               RegisterTitleText(),
-              Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8.0),
-                      border: Border.all(color: Colors.blue),
-                      // Adjust the border color as needed
-                      color: Colors.white),
-                  child: DropdownMenu<String>(
-                    width: MediaQuery.of(context).size.width.toInt() - 61,
-                    // ***
-                    initialSelection: professionList.first,
-                    menuStyle: MenuStyle(
-                        backgroundColor:
-                            MaterialStatePropertyAll<Color>(Colors.white)),
-                    onSelected: (String? value) {
-                      // This is called when the user selects an item.
-                      SignUpController.to.profession = value;
-                      SignUpController.to.check();
-                    },
-                    dropdownMenuEntries: professionList
-                        .map<DropdownMenuEntry<String>>((String value) {
-                      return DropdownMenuEntry<String>(
-                          value: value,
-                          label: value,
-                          trailingIcon: Icon(Icons.audiotrack));
-                    }).toList(),
-                  )),
+              CustomDropDownMenu(),
               SizedBox(height: 40),
+              Row(
+                children: [
+                  TermsCheckBox(),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Text("본 이용 약관에 동의합니다."),
+                  Spacer(),
+                  GestureDetector(
+                    onTap: () => Get.toNamed("/signup/termsandcondition"),
+                    // onTap: () => Get.toNamed("/signup2/"),
+                    child: const Text(
+                      "[내용보기]",
+                      style: TextStyle(color: Color.fromRGBO(251, 42, 66, 1.0)),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
               PageRouteButton(
                 text: "Next",
                 backGroundColor: Color.fromRGBO(251, 42, 66, 1.0),
                 textColor: Colors.white,
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed("/signup3");
+                },
               ),
               PageRouteButton(
                 text: "Skip",
